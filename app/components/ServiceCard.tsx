@@ -21,7 +21,7 @@ export default function ServiceCard({ service }: { service: Service }) {
         </p>
         <p className="text-emerald-600 font-medium mt-2">{service.price}</p>
         <Link
-          href={`/product/${service.slug}`}
+          href={`/products/${service.slug}`}
           className="inline-block mt-3 text-sm text-emerald-700 underline"
         >
           Lihat Detail

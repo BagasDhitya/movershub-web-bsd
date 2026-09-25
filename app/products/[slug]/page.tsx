@@ -4,21 +4,23 @@ import { notFound } from "next/navigation";
 import { services } from "@/app/data/dummy";
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
-export function generateMetadata({ params }: Props): Metadata {
-  const service = services.find((s) => s.slug === params.slug);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const service = services.find((s) => s.slug === slug);
   if (!service) return {};
-
   return {
     title: `${service.title} | MoversHub`,
     description: service.shortDescription,
   };
 }
 
-export default function ProductDetail({ params }: Props) {
-  const service = services.find((s) => s.slug === params.slug);
+export default async function ProductDetail({ params }: Props) {
+  const { slug } = await params;
+  const service = services.find((s) => s.slug === slug);
+
   if (!service) return notFound();
 
   return (
