@@ -7,6 +7,16 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+// Revalidate setiap 1 jam (3600 detik)
+export const revalidate = 3600;
+
+// Generate semua halaman secara statis saat build time
+export async function generateStaticParams() {
+  return services.map((service) => ({
+    slug: service.slug,
+  }));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const service = services.find((s) => s.slug === slug);
@@ -42,7 +52,7 @@ export default async function ProductDetail({ params }: Props) {
         <h2 className="text-xl font-semibold text-emerald-600 mt-4">
           Fitur Layanan {service.title}
         </h2>
-        <ul className="text-slate-600 space-y list-disc list-insidee">
+        <ul className="text-slate-600 space-y-2 list-disc list-inside">
           {service.features.map((feature, index) => (
             <li key={index}>{feature}</li>
           ))}

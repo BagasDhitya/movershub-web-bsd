@@ -168,7 +168,7 @@ export const services: Service[] = [
       "Relokasi kantor cepat tanpa mengganggu operasional bisnis.",
     description:
       "Kami membantu pemindahan peralatan kantor, dokumen, dan furnitur dengan jadwal fleksibel di luar jam kerja agar bisnis Anda tetap berjalan.",
-    price: "Mulai Rp 1.500.000",
+    price: "Mulai Rp 1.850.000",
     image:
       "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=800&q=80",
     features: [

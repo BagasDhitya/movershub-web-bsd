@@ -4,10 +4,29 @@ import ServiceCard from "../components/ServiceCard";
 
 import { services, seoData } from "../data/dummy";
 
+// SSR
+// -> proses rendering dilakukan oleh server Next.js
+// -> cocok untuk halaman yang butuh refresh data cepat: misal /products
+
+// peraturan menggunakan rendering SSR:
+// -- tidak boleh menggunakan useState
+// -- tidak boleh memanggil hooks seperti useMemo, useCallback, dll. (termasuk useEffect)
+
+// CSR
+// -> proses rendering dilakukan oleh Browser
+// -> cocok untuk halaman yang interaktif (seperti admin dashboard)
+
+// -- boleh menggunakan useState ataupun hooks lainnya
+
 export const metadata: Metadata = {
   title: seoData.product.title,
   description: seoData.product.description,
 };
+
+console.log(
+  "service data: ",
+  services.map((item) => item),
+);
 
 export default function Products() {
   return (
